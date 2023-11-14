@@ -1,0 +1,23 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Калькулятор Расходов</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="expense-calculator">
+        <h1>Трекер Расходов</h1>
+        <form id="expense-form">
+            <input type="text" id="expense-name" placeholder="Название расхода" required>
+            <input type="number" id="expense-amount" placeholder="Сумма" required>
+            <button type="submit">Добавить Расход</button>
+        </form>
+        <div id="expenses-list">
+            <h2>Всего расходов: <span id="total-expenses">0</span></h2>
+            <ul id="expenses"></ul>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
