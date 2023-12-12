@@ -9,7 +9,7 @@ class ExpenseCalculator extends HTMLElement {
         this.shadowRoot.innerHTML = `
   
         <style>
-        /* Component's container */
+       
         .expanse-calculator {
             width: 400px;
             padding: 40px;
@@ -20,7 +20,7 @@ class ExpenseCalculator extends HTMLElement {
             text-align: center;
         }
 
-        /* Input and button styles */
+      
         #expense-form input[type="text"],
         #expense-form input[type="number"] {
             width: calc(50% - 20px);
@@ -52,7 +52,7 @@ class ExpenseCalculator extends HTMLElement {
             background-color: #98c379;
         }
 
-        /* List styles */
+      
         #expense-list {
             margin-top: 30px;
             text-align: left;
@@ -116,6 +116,15 @@ class ExpenseCalculator extends HTMLElement {
         amountInput.value = '';
     }
 
+    deleteExpense(event) {
+        const index = event.target.dataset.index;
+        const deletedAmount = this.expenses[index].amount;
+        this.expenses.splice(index, 1);
+        this.total -= deletedAmount;
+        this.renderExpenses();
+        this.updateTotal();
+    }
+
     renderExpenses() {
         const expenseList = this.shadowRoot.getElementById('expense-list');
         expenseList.innerHTML = '';
@@ -137,14 +146,7 @@ class ExpenseCalculator extends HTMLElement {
         totalExpenses.textContent = this.total.toFixed(2);
     }
 
-    deleteExpense(event) {
-        const index = event.target.dataset.index;
-        const deletedAmount = this.expenses[index].amount;
-        this.expenses.splice(index, 1);
-        this.total -= deletedAmount;
-        this.renderExpenses();
-        this.updateTotal();
-    }
+    
 }
 
 customElements.define('expense-calculator', ExpenseCalculator);
